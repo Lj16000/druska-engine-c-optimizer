@@ -56,3 +56,4 @@ and stable.
 | Iter | Hypothesis / Change | Tests | MEDIAN_SCORE | Decision | Notes |
 | :--: | :-- | :--: | :--: | :--: | :-- |
 | 0 | Baseline run of cleaned flat-array order book | Pass | 6.66 ms | Keep | Initial benchmark on local harness, 15 runs |
+| 1 | Cache `bookEntry->size` and skip cancelled zero-size entries before trade reporting | Pass | 6.99 ms | Discard | Slower on local harness; extra branch outweighed reduced loads/calls |
