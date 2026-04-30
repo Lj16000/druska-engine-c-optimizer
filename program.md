@@ -68,3 +68,4 @@ and stable.
 | 10 | Add `-fomit-frame-pointer -fno-stack-protector` with LTO | Pass | 5.10 ms | Discard | Slower than current best; reverted compiler flag change |
 | 11 | Cache incoming order `symbol` and `trader` pointers in `limit()` | Pass | 5.12 ms | Discard | LTO already optimizes field address calculations; manual caching hurt register allocation |
 | 12 | Align global `pricePoints` and `arenaBookEntries` arrays to 64-byte cache lines | Pass | 4.87 ms | Keep | Repeated run 4.87/4.88; cheap alignment improved locality slightly |
+| 13 | Cache `bookEntry->size` without adding an explicit cancelled-order branch | Pass | 5.02 ms | Discard | Still slower; optimizer's original load/store schedule is better under LTO |
