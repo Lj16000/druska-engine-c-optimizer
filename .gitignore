@@ -1,0 +1,5 @@
+*.o
+test
+score
+score_output.txt
+.DS_Store
