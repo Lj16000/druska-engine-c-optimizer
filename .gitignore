@@ -2,4 +2,6 @@
 test
 score
 score_output.txt
+.matplotlib-cache/
+.tmp/
 .DS_Store

@@ -20,9 +20,12 @@ make
 ./test
 ./score
 python3 evaluate.py
+python3 plot_progress.py
 ```
 
 `MEDIAN_SCORE` is the optimization target. Lower is better.
+`plot_progress.py` reads the experiment log in `program.md` and writes
+`log.png`.
 
 ## Autonomous Optimization Flow
 
