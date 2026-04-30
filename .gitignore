@@ -4,4 +4,5 @@ score
 score_output.txt
 .matplotlib-cache/
 .tmp/
+github_screen.png
 .DS_Store
