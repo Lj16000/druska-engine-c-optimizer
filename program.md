@@ -64,3 +64,7 @@ and stable.
 | 6 | Store resting trader as 4 bytes without NUL terminator | Pass | 6.15 ms | Discard | Less insertion work was slower overall; reverted to field-length storage |
 | 7 | Add branch prediction hints to side and fill-size comparisons | Pass | 8.29 ms | Discard | Mispredict-prone on this random-side feed; branch hints hurt badly |
 | 8 | Enable link-time optimization with `-flto` in compile and link flags | Pass | 4.93 ms | Keep | Repeated run improved 5.12 -> 4.93; cross-file optimization is a large win |
+| 9 | Replace `-O3` with `-Ofast` while keeping LTO | Pass | 4.93 ms | Discard | Tied current best; no clear signal worth keeping |
+| 10 | Add `-fomit-frame-pointer -fno-stack-protector` with LTO | Pass | 5.10 ms | Discard | Slower than current best; reverted compiler flag change |
+| 11 | Cache incoming order `symbol` and `trader` pointers in `limit()` | Pass | 5.12 ms | Discard | LTO already optimizes field address calculations; manual caching hurt register allocation |
+| 12 | Align global `pricePoints` and `arenaBookEntries` arrays to 64-byte cache lines | Pass | 4.87 ms | Keep | Repeated run 4.87/4.88; cheap alignment improved locality slightly |

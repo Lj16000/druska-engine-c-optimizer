@@ -40,8 +40,10 @@
 
 #if defined(__GNUC__) || defined(__clang__)
 #define FORCE_INLINE static inline __attribute__((always_inline))
+#define CACHE_ALIGNED __attribute__((aligned(64)))
 #else
 #define FORCE_INLINE static inline
+#define CACHE_ALIGNED
 #endif
 
 typedef struct orderBookEntry {
@@ -55,8 +57,8 @@ typedef struct pricePoint {
   orderBookEntry_t *listTail;
 } pricePoint_t;
 
-static pricePoint_t pricePoints[MAX_PRICE + 1];
-static orderBookEntry_t arenaBookEntries[MAX_NUM_ORDERS];
+static pricePoint_t pricePoints[MAX_PRICE + 1] CACHE_ALIGNED;
+static orderBookEntry_t arenaBookEntries[MAX_NUM_ORDERS] CACHE_ALIGNED;
 
 static t_orderid curOrderID;
 static unsigned int askMin;
