@@ -1,6 +1,6 @@
 CC ?= cc
-CFLAGS ?= -O3 -std=c11 -Wall -Wextra -Wno-unused-parameter -DNDEBUG
-LDFLAGS ?=
+CFLAGS ?= -O3 -flto -std=c11 -Wall -Wextra -Wno-unused-parameter -DNDEBUG
+LDFLAGS ?= -flto
 
 .PHONY: all clean
 

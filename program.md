@@ -61,3 +61,6 @@ and stable.
 | 3 | Add `-march=native` to compiler flags | Pass | 6.62 ms | Discard | Slower than current best; compiler target tuning did not help this harness |
 | 4 | Force inline `ppInsertOrder` and `EXECUTE_TRADE` | Pass | 6.49 ms | Keep | Repeated run improved from 6.52 to 6.49; small but stable enough to keep |
 | 5 | Replace manually unrolled 4-byte field copy with fixed-size `memcpy` | Pass | 6.08 ms | Keep | Three runs gave 6.18/6.46/6.08; compiler-generated fixed copy beats manual byte stores |
+| 6 | Store resting trader as 4 bytes without NUL terminator | Pass | 6.15 ms | Discard | Less insertion work was slower overall; reverted to field-length storage |
+| 7 | Add branch prediction hints to side and fill-size comparisons | Pass | 8.29 ms | Discard | Mispredict-prone on this random-side feed; branch hints hurt badly |
+| 8 | Enable link-time optimization with `-flto` in compile and link flags | Pass | 4.93 ms | Keep | Repeated run improved 5.12 -> 4.93; cross-file optimization is a large win |
