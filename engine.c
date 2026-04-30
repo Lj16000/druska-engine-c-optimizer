@@ -38,6 +38,12 @@
   } while (0)
 #endif
 
+#if defined(__GNUC__) || defined(__clang__)
+#define FORCE_INLINE static inline __attribute__((always_inline))
+#else
+#define FORCE_INLINE static inline
+#endif
+
 typedef struct orderBookEntry {
   t_size size;
   struct orderBookEntry *next;
@@ -67,8 +73,7 @@ void init(void) {
 
 void destroy(void) {}
 
-static inline void ppInsertOrder(pricePoint_t *ppEntry,
-                                 orderBookEntry_t *entry) {
+FORCE_INLINE void ppInsertOrder(pricePoint_t *ppEntry, orderBookEntry_t *entry) {
   entry->next = NULL;
   if (ppEntry->listHead != NULL) {
     ppEntry->listTail->next = entry;
@@ -78,9 +83,9 @@ static inline void ppInsertOrder(pricePoint_t *ppEntry,
   ppEntry->listTail = entry;
 }
 
-static inline void EXECUTE_TRADE(const char *symbol, const char *buyTrader,
-                                 const char *sellTrader, t_price tradePrice,
-                                 t_size tradeSize) {
+FORCE_INLINE void EXECUTE_TRADE(const char *symbol, const char *buyTrader,
+                                const char *sellTrader, t_price tradePrice,
+                                t_size tradeSize) {
   t_execution exec;
 
   if (tradeSize == 0) {

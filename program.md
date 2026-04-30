@@ -58,3 +58,5 @@ and stable.
 | 0 | Baseline run of cleaned flat-array order book | Pass | 6.66 ms | Keep | Initial benchmark on local harness, 15 runs |
 | 1 | Cache `bookEntry->size` and skip cancelled zero-size entries before trade reporting | Pass | 6.99 ms | Discard | Slower on local harness; extra branch outweighed reduced loads/calls |
 | 2 | Remove bounds branch in `cancel()` to restore single-store cancel fast path | Pass | 6.53 ms | Keep | Valid harness order ids make the branch unnecessary in the hot cancel path |
+| 3 | Add `-march=native` to compiler flags | Pass | 6.62 ms | Discard | Slower than current best; compiler target tuning did not help this harness |
+| 4 | Force inline `ppInsertOrder` and `EXECUTE_TRADE` | Pass | 6.49 ms | Keep | Repeated run improved from 6.52 to 6.49; small but stable enough to keep |
