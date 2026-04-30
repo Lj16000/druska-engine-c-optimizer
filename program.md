@@ -60,3 +60,4 @@ and stable.
 | 2 | Remove bounds branch in `cancel()` to restore single-store cancel fast path | Pass | 6.53 ms | Keep | Valid harness order ids make the branch unnecessary in the hot cancel path |
 | 3 | Add `-march=native` to compiler flags | Pass | 6.62 ms | Discard | Slower than current best; compiler target tuning did not help this harness |
 | 4 | Force inline `ppInsertOrder` and `EXECUTE_TRADE` | Pass | 6.49 ms | Keep | Repeated run improved from 6.52 to 6.49; small but stable enough to keep |
+| 5 | Replace manually unrolled 4-byte field copy with fixed-size `memcpy` | Pass | 6.08 ms | Keep | Three runs gave 6.18/6.46/6.08; compiler-generated fixed copy beats manual byte stores |

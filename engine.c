@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define UNROLL_FIELD_COPY
+/* #define UNROLL_FIELD_COPY */
 #define MAX_NUM_ORDERS 1010000u
 
 #ifdef DEBUG
