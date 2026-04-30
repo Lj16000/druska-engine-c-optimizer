@@ -49,7 +49,7 @@ static void generate_feed(void) {
 
     /*
       Keep prices clustered so most orders inspect only a few price points,
-      matching the shape of the QuantCup benchmark.
+      matching the intended shape of the druska/engine.c benchmark.
     */
     order->price = 30000u + ((r >> 8) % 401u) - 200u;
     if (order->price < MIN_PRICE) {

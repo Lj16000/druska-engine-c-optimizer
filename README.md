@@ -1,11 +1,11 @@
-# QuantCup AI Optimizer
+# druska/engine.c AI Optimizer
 
-This project packages the price-time matching engine you provided into a small
-autonomous optimization sandbox.
+This project packages optimization work for `druska/engine.c` into a small
+autonomous performance-iteration sandbox.
 
 ## What Is Included
 
-- `engine.c`: cleaned C implementation of the flat price-array order book.
+- `engine.c`: optimized C implementation of `druska/engine.c`.
 - `test.c`: correctness tests for crossing, FIFO priority, partial fills, and
   cancellation.
 - `score.c`: deterministic benchmark feed.
@@ -34,7 +34,7 @@ The safe workflow is:
 ```sh
 git init
 git add .
-git commit -m "Initial order book optimizer baseline"
+git commit -m "Initial druska engine.c optimizer baseline"
 python3 evaluate.py
 ```
 

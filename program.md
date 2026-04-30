@@ -1,7 +1,6 @@
 # Autonomous Optimization Program
 
-You are optimizing a C limit order book matching engine derived from the
-QuantCup price-time matching engine.
+You are optimizing `druska/engine.c`, a C price-time matching engine.
 
 ## Goal
 
