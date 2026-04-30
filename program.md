@@ -57,3 +57,4 @@ and stable.
 | :--: | :-- | :--: | :--: | :--: | :-- |
 | 0 | Baseline run of cleaned flat-array order book | Pass | 6.66 ms | Keep | Initial benchmark on local harness, 15 runs |
 | 1 | Cache `bookEntry->size` and skip cancelled zero-size entries before trade reporting | Pass | 6.99 ms | Discard | Slower on local harness; extra branch outweighed reduced loads/calls |
+| 2 | Remove bounds branch in `cancel()` to restore single-store cancel fast path | Pass | 6.53 ms | Keep | Valid harness order ids make the branch unnecessary in the hot cancel path |

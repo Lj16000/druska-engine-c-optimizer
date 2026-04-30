@@ -193,7 +193,5 @@ t_orderid limit(t_order order) {
 }
 
 void cancel(t_orderid orderid) {
-  if (orderid < MAX_NUM_ORDERS) {
-    arenaBookEntries[orderid].size = 0;
-  }
+  arenaBookEntries[orderid].size = 0;
 }
